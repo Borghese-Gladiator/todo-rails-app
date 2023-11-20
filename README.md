@@ -35,6 +35,49 @@ Ruby version:  ruby 3.2.2 (2023-03-30 revision e51014f9c0) [x64-mingw-ucrt]
   New: app/views/tasks/new.html.erb
   Edit: app/views/tasks/edit.html.erb
   ```
+- create GitHub Action to build image and push to DockerHub
+  - create DockerHub repository to store images
+  - create DockerHub access token
+  - go to GitHub repository | Settings | Secrets and variables | Actions | click "New repository secret"
+    - `DOCKERHUB_USERNAME: <value>`
+    - `DOCKERHUB_TOKEN: <value>`
+  - linux
+    ```
+    mkdir -p .github/workflows
+    touch .github/workflows/build_and_push.yaml
+    ```
+  - windows (batch)
+    ```
+    mkdir .github\workflows
+    type nul > .github\workflows\build_and_push.yaml
+    ```
+  - windows (powershell)
+    ```
+    New-Item -ItemType Directory -Path .github\workflows
+    New-Item -ItemType File -Path .github\workflows\build_and_push.yaml
+    ```
+- create Kubernetes manifests in kubernetes/ using Docker Image name
+  - linux
+    ```
+    mkdir kubernetes
+    touch kubernetes\build_and_push.yaml
+    touch kubernetes\ingress.yaml
+    touch kubernetes\service.yaml
+    ```
+  - windows (batch)
+    ```
+    mkdir kubernetes
+    type nul > kubernetes\build_and_push.yaml
+    type nul > kubernetes\ingress.yaml
+    type nul > kubernetes\service.yaml
+    ```
+  - windows (powershell)
+    ```
+    New-Item -ItemType Directory -Path kubernetes
+    New-Item -ItemType File -Path kubernetes\deployment.yaml
+    New-Item -ItemType File -Path kubernetes\ingress.yaml
+    New-Item -ItemType File -Path kubernetes\service.yaml
+    ```
 
 ## Deployment
 - deploy to Railway 
