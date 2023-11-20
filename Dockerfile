@@ -4,6 +4,11 @@
 ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
+# Add labels
+LABEL org.opencontainers.image.source=https://github.com/Borghese-Gladiator/todo-flask-app
+LABEL org.opencontainers.image.description="Sample image description"
+LABEL org.opencontainers.image.licenses=MIT
+
 # Rails app lives here
 WORKDIR /rails
 
